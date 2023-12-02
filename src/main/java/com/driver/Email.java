@@ -34,30 +34,31 @@ public class Email {
         // 4. It contains at least one digit
         // 5. It contains at least one special character. Any character apart from alphabets and digits is a special character
 
-        if(oldPassword.equals(getPassword()))
+        if(oldPassword.equals(getPassword()) && isValid(newPassword))
         {
-            boolean checkForUpperCase=false;
-            boolean checkForLowerCase=false;
-            boolean checkForDigit=false;
-            boolean checkForSpecialChar=false;
-            if(newPassword.length()==8)
-            {
-                for(int ch : newPassword.toCharArray()){
-                    if(Character.isUpperCase(ch)){
-                        checkForUpperCase = true;
-                    } else if (Character.isLowerCase(ch)) {
-                        checkForLowerCase = true;
-                    }else if(Character.isDigit(ch)){
-                        checkForDigit = true;
-                    }else{
-                        checkForSpecialChar = true;
-                    }
+            password=newPassword;
+        }
+    }
+    public boolean isValid(String newPassword)
+    {
+        boolean checkForUpperCase=false;
+        boolean checkForLowerCase=false;
+        boolean checkForDigit=false;
+        boolean checkForSpecialChar=false;
+        if(newPassword.length()==8)
+        {
+            for(int ch : newPassword.toCharArray()){
+                if(Character.isUpperCase(ch)){
+                    checkForUpperCase = true;
+                } else if (Character.isLowerCase(ch)) {
+                    checkForLowerCase = true;
+                }else if(Character.isDigit(ch)){
+                    checkForDigit = true;
+                }else{
+                    checkForSpecialChar = true;
                 }
             }
-            if(checkForUpperCase && checkForLowerCase && checkForDigit && checkForSpecialChar)
-            {
-                setPassword(newPassword);
-            }
         }
+        return checkForUpperCase && checkForLowerCase && checkForDigit && checkForSpecialChar;
     }
 }
