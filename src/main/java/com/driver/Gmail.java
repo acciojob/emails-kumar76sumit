@@ -13,6 +13,18 @@ class Mail
         this.senderName = senderName;
         this.message = message;
     }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public String getSenderName() {
+        return senderName;
+    }
+
+    public String getMessage() {
+        return message;
+    }
 }
 public class Gmail extends Email {
 
