@@ -41,22 +41,23 @@ public class Email {
     }
     public boolean isValid(String newPassword)
     {
+        if(newPassword.length()<8)
+        {
+            return false;
+        }
         boolean checkForUpperCase=false;
         boolean checkForLowerCase=false;
         boolean checkForDigit=false;
         boolean checkForSpecialChar=false;
-        if(newPassword.length()==8)
-        {
-            for(int ch : newPassword.toCharArray()){
-                if(Character.isUpperCase(ch)){
-                    checkForUpperCase = true;
-                } else if (Character.isLowerCase(ch)) {
-                    checkForLowerCase = true;
-                }else if(Character.isDigit(ch)){
-                    checkForDigit = true;
-                }else{
-                    checkForSpecialChar = true;
-                }
+        for(int ch : newPassword.toCharArray()){
+            if(Character.isUpperCase(ch)){
+                checkForUpperCase = true;
+            } else if (Character.isLowerCase(ch)) {
+                checkForLowerCase = true;
+            }else if(Character.isDigit(ch)){
+                checkForDigit = true;
+            }else{
+                checkForSpecialChar = true;
             }
         }
         return checkForUpperCase && checkForLowerCase && checkForDigit && checkForSpecialChar;
