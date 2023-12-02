@@ -51,10 +51,10 @@ public class Gmail extends Email {
         if(inbox.size()==inboxCapacity)
         {
             Mail oldMail=inbox.removeFirst();
-            trash.add(oldMail);
+            trash.addLast(oldMail);
         }
         Mail newMail=new Mail(date,sender,message);
-        inbox.add(newMail);
+        inbox.addLast(newMail);
     }
 
     public void deleteMail(String message){
@@ -66,7 +66,7 @@ public class Gmail extends Email {
         }
         if(inbox.size()!=0)
         {
-            inbox.removeFirst();
+            trash.addLast(inbox.removeFirst());
         }
         while(st.size()!=0)
         {
