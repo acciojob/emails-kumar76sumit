@@ -42,24 +42,15 @@ public class Email {
             boolean checkForSpecialChar=false;
             if(newPassword.length()==8)
             {
-                for(int i=0;i<8;i++)
-                {
-                    char ch=newPassword.charAt(i);
-                    if(ch>='a' && ch<='z')
-                    {
-                        checkForLowerCase=true;
-                    }
-                    else if(ch>='A' && ch<='Z')
-                    {
-                        checkForUpperCase=true;
-                    }
-                    else if(ch>='0' && ch<='9')
-                    {
-                        checkForDigit=true;
-                    }
-                    else
-                    {
-                        checkForSpecialChar=true;
+                for(int ch : newPassword.toCharArray()){
+                    if(Character.isUpperCase(ch)){
+                        checkForUpperCase = true;
+                    } else if (Character.isLowerCase(ch)) {
+                        checkForLowerCase = true;
+                    }else if(Character.isDigit(ch)){
+                        checkForDigit = true;
+                    }else{
+                        checkForSpecialChar = true;
                     }
                 }
             }
