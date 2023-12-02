@@ -49,11 +49,11 @@ public class Email {
                     {
                         checkForLowerCase=true;
                     }
-                    if(ch>='A' && ch<='Z')
+                    else if(ch>='A' && ch<='Z')
                     {
                         checkForUpperCase=true;
                     }
-                    if(ch>='0' && ch<='9')
+                    else if(ch>='0' && ch<='9')
                     {
                         checkForDigit=true;
                     }
