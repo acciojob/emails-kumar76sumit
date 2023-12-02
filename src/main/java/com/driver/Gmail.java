@@ -97,20 +97,30 @@ public class Gmail extends Email {
     public int findMailsBetweenDates(Date start, Date end){
         //find number of mails in the inbox which are received between given dates
         //It is guaranteed that start date <= end date
-        int count=0;
-        while(inbox.size()!=0)
-        {
-            Mail currMail=inbox.removeFirst();
-            if(currMail.date.after(start) && currMail.date.before(end))
-            {
+//        int count=0;
+//        while(inbox.size()!=0)
+//        {
+//            Mail currMail=inbox.removeFirst();
+//            if(currMail.date.after(start) && currMail.date.before(end))
+//            {
+//                count++;
+//            }
+//            st.push(currMail);
+//        }
+//        while(st.size()!=0)
+//        {
+//            inbox.addFirst(st.pop());
+//        }
+//        return count;
+        int count = 0;
+
+        for (Mail mail : inbox) {
+            Date mailDate = mail.getDate();
+            if (mailDate.equals(start) || (mailDate.after(start) && mailDate.before(end)) || mailDate.equals(end)) {
                 count++;
             }
-            st.push(currMail);
         }
-        while(st.size()!=0)
-        {
-            inbox.addFirst(st.pop());
-        }
+
         return count;
     }
 
